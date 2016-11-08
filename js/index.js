@@ -18,7 +18,7 @@ function loadtitlecolor(){
 	console.log(window.location.href)
 	for(i=0;i<a.length;i++){
 		$(a[i]).removeClass('active');
-		if(window.location.href.indexOf(a[i].href)!=-1||window.location.href=='https://309166513.github.io/'){
+		if(window.location.href.indexOf(a[i].href)!=-1){
 			$(a[i]).addClass('active');
 		}
 	}
