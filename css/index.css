@@ -77,9 +77,12 @@ header nav a {
 header nav a:hover{
 	background:#e41635 none repeat scroll 0 0;
 }
+<<<<<<< HEAD
 header nav a[class*='active']{
     background:#e41635 none repeat scroll 0 0;
 }
+=======
+>>>>>>> origin/master
 
 /* 主页博文列表 */
 article{
