@@ -77,7 +77,7 @@ function getpos(){
             if (remote_ip_info.ret == '1') {
                 
             	var loca = remote_ip_info.country+remote_ip_info.province+'省'+remote_ip_info.city+'市';
-            	console.log(loca);
+            	
             } else {
                 var loca ='无法获取当前所在地区信息';
             }
@@ -86,4 +86,14 @@ function getpos(){
 
 	 
 
+}
+
+addloadEvent(changeindexbg);
+
+function changeindexbg(){
+	var banner = document.getElementById('banner');
+	var imgs= ['images/banner2.jpg','images/banner4.jpg'];
+	var num = Math.ceil(Math.random()*imgs.length-1);
+	
+	banner.style.backgroundImage='url(\''+imgs[num]+'';
 }

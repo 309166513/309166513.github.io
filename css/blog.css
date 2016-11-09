@@ -1,0 +1,104 @@
+article .your_pos{
+    border-bottom: 1px solid #d7d7d7;
+    color: #666;
+    font-size: 12px;
+    height: 30px;
+    line-height: 30px;
+    margin: 20px;
+    padding-left: 60px;
+    background: url('../images/pos.png') no-repeat 40px;
+}
+article .your_pos a{
+    color: #666;
+    margin: 0 5px;
+}
+article .your_pos a:hover{
+    color: #CE69E9;
+    text-decoration: underline;
+}
+
+
+
+.blogs {
+    margin: 0 20px 20px;
+    position: relative;
+}
+
+.bloglist .blogs:before{
+    background: #cac1c1 none repeat scroll 0 0;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    content: "";
+    width: 10px;
+    height: 10px;
+    left: -27px;
+    position: absolute;
+    transition: all 1s ease 0s;
+}
+.bloglist .blogs:after{
+    background: #474645 url("../images/ti.png") no-repeat;
+    content: "";
+    height: 29px;
+    left: -148px;
+    width: 121px;
+    position: absolute;
+    top: -9px;
+    transition: all 1s ease 0s;
+    opacity: 0;
+}
+.bloglist .blogs:hover:after{
+    opacity: 1;
+}
+.blogs h3 {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 15px;
+   
+}
+.blogs h3 a:hover{
+    text-decoration: underline;
+}
+
+.bloglist .blogs figure{
+    width: 25%;
+    overflow: hidden;
+}
+
+.bloglist .blogs figure img{
+    margin: auto;
+    transition:0.5s ease 0s;
+    width: 100%;
+}
+.bloglist .blogs figure img:hover{
+    transform: scale(1.1);
+}
+.bloglist .blogs .artview{
+    color: #474645;
+    line-height: 20px;
+    font-size: 12px;
+    width: 100%;
+}
+a.readmore {
+   
+    color: #F80C2D;
+   
+    margin: 20px 0 0;
+    
+}
+a.readmore:hover{
+    text-decoration: underline;
+}
+
+.author{
+    display: block;
+    background: #f6f6f6 none repeat scroll 0 0;
+    color: #838383;
+    height: 26px;
+    line-height: 26px;
+    margin: 10px 0 0;
+    overflow: hidden;
+    width: 100%;
+}
+.author span {
+    margin: 0 10px;
+}
