@@ -1,0 +1,122 @@
+/* 设置背景 */
+.ibody {
+    background: rgba(0, 0, 0, 0) url("../images/bg.png") repeat-y scroll 0 0;
+    box-shadow: -2px -1px 5px #666;
+    margin: auto;
+    width: 1000px;
+}
+body {
+    font: 14px "宋体",Arial,Helvetica,sans-serif;
+}
+
+.clearfix:after,.clearfix:before{
+	content: '';
+	display: table;
+}
+.clearfix:after{
+	clear: both;
+}
+.left{
+	float: left;
+}
+.right{
+	float: right;
+}
+
+/* 设置头部 */
+header {
+   /*  background: rgba(0, 0, 0, 0) url("../images/ibodybg.png") no-repeat scroll right top; */
+    position: relative;
+}
+
+header h1 {
+    font-family: "Microsoft Yahei",Arial,Helvetica,sans-serif;
+    font-size: 22px;
+    padding: 15px 0 0 80px;
+}
+
+header h2 {
+    color: #8e8d8d;
+    margin: 20px 80px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+header .logo {
+    background: #000 url("../images/home.png") no-repeat scroll center center;
+    border-radius: 50%;
+    box-shadow: 0 2px 2px #414141;
+    height: 145px;
+    left: -72px;
+    position: absolute;
+    top: 40px;
+    width: 145px;
+}
+
+header .logo a {
+    display: block;
+    height: 100%;
+    width: 100%;
+}
+
+header nav {
+    background: rgba(0, 0, 0, 0.8) none repeat scroll 0 0;
+    height: 48px;
+    line-height: 48px;
+    padding-left: 80px;
+}
+header nav a {
+    color: #fff;
+    display: inline-block;
+    font-family: "Microsoft Yahei",Arial,Helvetica,sans-serif;
+    font-size: 18px;
+    padding: 0 20px;
+    transition: all 1s ease 0s;
+}
+header nav a:hover{
+	background:#e41635 none repeat scroll 0 0;
+}
+header nav a[class*='active']{
+    background:#e41635 none repeat scroll 0 0;
+}
+
+/* 基本主栏样式 */
+article{
+	width: 73%;
+	float: left;
+}
+
+
+/* 主页边栏 */
+aside{
+	width: 27%;
+	float: right;
+}
+
+
+/* 顶部时间地区控件 */
+#time_location{
+    position: absolute;
+    height: 84px;
+    right: 60px;
+    top: 60px;
+    width: 145px;
+    color: #fff;
+    line-height: 1.5;
+
+}
+
+
+/* 底边 */
+footer{
+	display: block;
+    font-size: 12px;
+    line-height: 1.5;
+    text-align: center;
+    padding: 50px;
+}
+
+    
+    
+

@@ -112,7 +112,7 @@ article .banner ul li:hover{
     background: #cac1c1 none repeat scroll 0 0;
     border: 2px solid #fff;
     border-radius: 50%;
-    content: '';
+    content: "";
     width: 10px;
     height: 10px;
     left: -27px;
@@ -121,7 +121,7 @@ article .banner ul li:hover{
 }
 .bloglist .blogs:after{
     background: #474645 url("../images/ti.png") no-repeat;
-    content: attr(data-time);
+    content: "";
     height: 29px;
     left: -148px;
     width: 121px;
@@ -129,9 +129,6 @@ article .banner ul li:hover{
     top: -9px;
     transition: all 1s ease 0s;
     opacity: 0;
-    color: white;
-    line-height: 28px;
-    text-align: center;
 }
 .bloglist .blogs:hover:after{
     opacity: 1;

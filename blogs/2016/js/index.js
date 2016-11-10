@@ -88,21 +88,3 @@ function getpos(){
 
 }
 
-/*定义阅读全文链接*/
-(function(){
-
-	var bloglist = document.getElementsByClassName('bloglist');
-	for(i=0;i<bloglist.length;i++){
-		var readmore = bloglist[i].getElementsByClassName('readmore')[0];
-		var tit = bloglist[i].getElementsByClassName('tit')[0];
-		
-		readmore.href = tit.attributes['data-url'].nodeValue;
-
-		
-	}
-
-
-
-
-}())
-
