@@ -37,7 +37,7 @@ article .your_pos a:hover{
 }
 .bloglist .blogs:after{
     background: #474645 url("../images/ti.png") no-repeat;
-    content: "";
+    content: attr(data-time);
     height: 29px;
     left: -148px;
     width: 121px;
@@ -45,6 +45,9 @@ article .your_pos a:hover{
     top: -9px;
     transition: all 1s ease 0s;
     opacity: 0;
+    color: white;
+    line-height: 28px;
+    text-align: center;
 }
 .bloglist .blogs:hover:after{
     opacity: 1;
