@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Cold Tea个人博客网站</title>
+	<meta name="keywords" content="吴相杰,博客,cold tea,前端">
+	<meta name="description" content="吴相杰的个人博客网站">
+
+	<link rel="shortcut icon" href="favicon.ico"/>
+	<link rel="bookmark" href="favicon.ico"/>
+	
+	<link rel="stylesheet" type="text/css" href="css/cssreset.css">
+	<link rel="stylesheet" type="text/css" href="css/base.css">
+	<link rel="stylesheet" type="text/css" href="css/blogs.css">
+	<link rel="stylesheet" type="text/css" href="css/shCoreDefault.css">
+	<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">
+</head>
+<body>
+	<div class="ibody clearfix">
+
+<!-- /header -->
+		<header>
+			<h1>Cold Tea</h1>
+			<h2>
+				那些我们一直惴惴不安 而又充满好奇的未来 在我心里 隐隐约约地感觉到它们是明亮的
+			</h2>
+
+<!-- 头部logo -->
+			<div class="logo">
+				<a href="https://309166513.github.io/index.html"></a>
+			</div>
+			<div id="time_location">
+				<span></span>
+				<span></span>
+			</div>
+<!-- 头部导航 -->			
+			<nav id="topnav">
+				<a href="https://309166513.github.io/index.html">首页</a>
+				<a href="https://309166513.github.io/about.html">关于我</a>
+				<a href="https://309166513.github.io/blog.html">博文列表</a>
+				<a href="https://309166513.github.io/works.html">作品</a>
+				<a href="https://309166513.github.io/messages.html">留言板</a>
+			</nav>
+		</header>
+<!-- about主栏 -->
+	<article>
+		<div class="your_pos">
+			
+			<span>
+				您当前所在的位置是：<a href="https://309166513.github.io/index.html">首页</a>><a href="https://309166513.github.io/blog.html">博文列表</a>><span class="tit"></span>
+			</span>
+		</div>
+
+		<div class="content">
+
+<!-- 文章标题 -->
+			<h3 class="blog_tit">
+				懒加载实现原理
+			</h3>
+<!-- class="brush:xml brush:css brush:js" -->
+<!-- 文章内容区 -->
+			<p>
+				一、什么是图片滚动加载？
+			</p>
+			<p>
+				通俗的讲就是：当访问一个页面的时候，先把img元素或是其他元素的背景图片路径替换成一张大小为1*1px图片的路径（这样就只需请求一次），只有当图片出现在浏览器的可视区域内时，才设置图片正真的路径，让图片显示出来。这就是图片懒加载。
+			</p>
+			<p>
+				二、为什要使用这个技术？
+			</p>
+			<p>
+				比如一个页面中有很多图片，如淘宝、京东首页等等，如果一上来就发送这么多请求，页面加载就会很漫长
+			</p>
+			<p>
+				使用懒加载技术后：不仅可以减轻服务器的压力，而且可以让加载好的页面更快地呈现在用户面前（用户体验好）。
+			</p>
+			<p>
+				三、怎么实现？
+			</p>
+			<p>
+				页面中的img元素，如果没有src属性，浏览器就不会发出请求去下载图片。一旦通过javascript设置了图片路径，浏览器才会送请求。
+			</p>
+			<p>
+				首先将页面中所有的图片的路径统一设置成统一的替代用的图片，把真实路径存储在'data-url'的自定义属性中；
+			</p>
+			<p>
+				当元素进入浏览器可视区中后，将'data-url'的值负值给src；
+			</p>
+			<p>
+				jq插件分析
+			</p>
+			<p>
+				<pre class="brush:js">
+(function($) {
+    $.fn.scrollLoading = function(options) {
+        var defaults = {
+            // 在html标签中存放的属性名称；
+            attr: "data-url",
+            // 父元素默认为window
+            container: window,
+            callback: $.noop
+        };
+        // 不管有没有传入参数，先合并再说；
+        var params = $.extend({}, defaults, options || {});
+        // 把父元素转为jquery对象；
+        var container = $(params.container);
+        // 新建一个数组，然后调用each方法，用于存储每个dom对象相关的数据；
+        params.cache = [];
+        $(this).each(function() {
+            // 取出jquery对象中每个dom对象的节点类型，取出每个dom对象上设置的图片路径
+            var node = this.nodeName.toLowerCase(), url = $(this).attr(params["attr"]);
+            //重组，把每个dom对象上的属性存为一个对象；
+            var data = {
+                obj: $(this),
+                tag: node,
+                url: url
+            };
+            // 把这个对象加到一个数组中；
+            params.cache.push(data);
+        });
+
+        var callback = function(call) {
+            if ($.isFunction(params.callback)) {
+                params.callback.call(call);
+            }
+        };
+        
+        //每次触发滚动事件时，对每个dom元素与container元素进行位置判断，如果满足条件，就把路径赋予这个dom元素！
+        var loading = function() {
+            // 获取父元素的高度
+            var contHeight = container.outerHeight();
+            var contWidth = container.outerWidth();
+
+            // 获取父元素相对于文档页顶部的距离，这边要注意了，分为以下两种情况；
+            if (container.get(0) === window) {
+                // 第一种情况父元素为window，获取浏览器滚动条已滚动的距离；$(window)没有offset()方法；
+                var contop = $(window).scrollTop();
+                var conleft = $(window).scrollLeft();
+            } else {
+                // 第二种情况父元素为非window元素，获取它的滚动条滚动的距离；
+                var contop = container.offset().top;
+                var conleft = container.offset().left;
+            }
+
+            $.each(params.cache, function(i, data) {
+                var o = data.obj, tag = data.tag, url = data.url, post, posb, posl, posr;
+                if (o) {
+                    //对象顶部与文档顶部之间的距离，如果它小于父元素底部与文档顶部的距离，则说明垂直方向上已经进入可视区域了；
+                    post = o.offset().top - (contop + contHeight);
+                    //对象底部与文档顶部之间的距离，如果它大于父元素顶部与文档顶部的距离，则说明垂直方向上已经进入可视区域了；
+                    posb = o.offset().top + o.height() - contop;
+
+                    // 水平方向上同理；
+                    posl = o.offset().left - (conleft + contWidth);
+                    posr = o.offset().left + o.width() - conleft;
+
+                    // 只有当这个对象是可视的，并且这四个条件都满足时，才能给这个对象赋予图片路径；
+                    if ( o.is(':visible') && (post < 0 && posb > 0) && (posl < 0 && posr > 0) ) {
+                        if (url) {
+                            //在浏览器窗口内
+                            if (tag === "img") {
+                                //设置图片src
+                                callback(o.attr("src", url));
+                            } else {
+                                // 设置除img之外元素的背景url
+                                callback(o.css("background-image", "url("+ url +")"));
+                            }
+                        } else {
+                            // 无地址，直接触发回调
+                            callback(o);
+                        }
+                        // 给对象设置完图片路径之后，把params.cache中的对象给清除掉；对象再进入可视区，就不再进行重复设置了；
+                        data.obj = null;
+                    }
+                }
+            });
+        };
+        //加载完毕即执行
+        loading();
+        //滚动执行
+        container.bind("scroll", loading);
+    };
+})(jQuery);
+				</pre>
+			</p>
+			<p>
+				参考文章：<a href="http://blog.csdn.net/ning109314/article/details/7042829"> LazyLoad.js及scrollLoading.js </a>
+			</p>
+		
+		</div>
+
+
+		
+	</article>
+
+
+
+
+<!-- about边栏 -->
+		<aside>
+			<div class="side_nav" id ='side_nav'>
+				<ul>
+					<li>
+						<a href="https://309166513.github.io/index.html">首页</a>
+					</li>
+					<li>
+						<a href="https://309166513.github.io/about.html">关于我</a>
+					</li>
+					<li>
+						<a href="https://309166513.github.io/blog.html">博文列表</a>
+					</li>
+					<li>
+						<a href="https://309166513.github.io/works.html">作品</a>
+					</li>
+					
+					<li>
+						<a href="https://309166513.github.io/messages.html">留言板</a>
+					</li>
+				</ul>
+			</div>
+			
+
+
+		</aside>
+
+		<footer style='clear:both'>
+			© Copyright 2016 Cold Tea
+		</footer>
+		<script type="text/javascript" src='js/shCore.js'></script>
+		<script type="text/javascript" src='js/shBrushJScript.js'></script>
+		<script type="text/javascript" src='js/shBrushCss.js'></script>
+		<script type="text/javascript" src='js/shBrushXml.js'></script>
+		<script type="text/javascript" src='js/jQuery3.1.0.min.js'></script>
+		
+		<script type="text/javascript" src='js/index.js'></script>
+		<script type="text/javascript" src='js/blogs.js'></script>
+		
+	</div>
+</body>
+</html>

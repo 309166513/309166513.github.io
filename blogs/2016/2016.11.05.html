@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Cold Tea个人博客网站</title>
+	<meta name="keywords" content="吴相杰,博客,cold tea,前端">
+	<meta name="description" content="吴相杰的个人博客网站">
+
+	<link rel="shortcut icon" href="favicon.ico"/>
+	<link rel="bookmark" href="favicon.ico"/>
+	
+	<link rel="stylesheet" type="text/css" href="css/cssreset.css">
+	<link rel="stylesheet" type="text/css" href="css/base.css">
+	<link rel="stylesheet" type="text/css" href="css/blogs.css">
+	<link rel="stylesheet" type="text/css" href="css/shCoreDefault.css">
+	<style type="text/css">
+		h4{
+			font-size: 16px;
+			color: #EA1537;
+		}
+	</style>
+	<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">
+</head>
+<body>
+	<div class="ibody clearfix">
+
+<!-- /header -->
+		<header>
+			<h1>Cold Tea</h1>
+			<h2>
+				那些我们一直惴惴不安 而又充满好奇的未来 在我心里 隐隐约约地感觉到它们是明亮的
+			</h2>
+
+<!-- 头部logo -->
+			<div class="logo">
+				<a href="https://309166513.github.io/index.html"></a>
+			</div>
+			<div id="time_location">
+				<span></span>
+				<span></span>
+			</div>
+<!-- 头部导航 -->			
+			<nav id="topnav">
+				<a href="https://309166513.github.io/index.html">首页</a>
+				<a href="https://309166513.github.io/about.html">关于我</a>
+				<a href="https://309166513.github.io/blog.html">博文列表</a>
+				<a href="https://309166513.github.io/works.html">作品</a>
+				<a href="https://309166513.github.io/messages.html">留言板</a>
+			</nav>
+		</header>
+<!-- about主栏 -->
+	<article>
+		<div class="your_pos">
+			
+			<span>
+				您当前所在的位置是：<a href="https://309166513.github.io/index.html">首页</a>><a href="https://309166513.github.io/blog.html">博文列表</a>><span class="tit"></span>
+			</span>
+		</div>
+
+		<div class="content">
+
+<!-- 文章标题 -->
+			<h3 class="blog_tit">
+				常见浏览器兼容问题总结
+			</h3>
+<!-- class="brush:xml brush:css brush:js" -->
+<!-- 文章内容区 -->
+			<h4>
+				一：不同浏览器的标签默认的margin和padding不同
+			</h4><br>
+			<p>
+				解决办法：cssreset
+			</p>
+			<h4>
+				二：块属性标签float后，又有横行的margin情况下，在IE6显示margin比设置的大
+			</h4><br>
+			<p>
+				解决方案：在float的标签样式控制中加入 display:inline;将其转化为行内属性
+			</p>
+			<h4>
+				三：设置较小高度标签（一般小于10px），在IE6，IE7，遨游中高度超出自己设置高度
+			</h4><br>
+			<p>
+				解决方案：给超出高度的标签设置overflow:hidden;或者设置行高line-height 小于你设置的高度。
+			</p>
+			<h4>
+				四：行内属性标签，设置display:block后采用float布局，又有横行的margin的情况，IE6间距bug
+			</h4><br>
+			<p>
+				解决方案：在display:block;后面加入display:inline;display:table;
+			</p>
+			<h4>
+				五：图片默认有间距
+			</h4><br>
+			<p>
+				解决方案：使用float属性为img布局
+			</p>
+			<h4>
+				六：标签最低高度设置min-height不兼容
+			</h4><br>
+			<p>
+				解决方案：如果我们要设置一个标签的最小高度200px，需要进行的设置为：{min-height:200px; height:auto !important; height:200px; overflow:visible;}
+			</p>
+
+			
+<!-- 文章内容区end -->		
+		</div>
+
+
+		
+	</article>
+
+
+
+
+<!-- about边栏 -->
+		<aside>
+			<div class="side_nav" id ='side_nav'>
+				<ul>
+					<li>
+						<a href="https://309166513.github.io/index.html">首页</a>
+					</li>
+					<li>
+						<a href="https://309166513.github.io/about.html">关于我</a>
+					</li>
+					<li>
+						<a href="https://309166513.github.io/blog.html">博文列表</a>
+					</li>
+					<li>
+						<a href="https://309166513.github.io/works.html">作品</a>
+					</li>
+					
+					<li>
+						<a href="https://309166513.github.io/messages.html">留言板</a>
+					</li>
+				</ul>
+			</div>
+			
+
+
+		</aside>
+
+		<footer style='clear:both'>
+			© Copyright 2016 Cold Tea
+		</footer>
+		<script type="text/javascript" src='js/shCore.js'></script>
+		<script type="text/javascript" src='js/shBrushJScript.js'></script>
+		<script type="text/javascript" src='js/shBrushCss.js'></script>
+		<script type="text/javascript" src='js/shBrushXml.js'></script>
+		<script type="text/javascript" src='js/jQuery3.1.0.min.js'></script>
+		
+		<script type="text/javascript" src='js/index.js'></script>
+		<script type="text/javascript" src='js/blogs.js'></script>
+		
+	</div>
+</body>
+</html>

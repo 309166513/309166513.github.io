@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Cold Tea个人博客网站</title>
+	<meta name="keywords" content="吴相杰,博客,cold tea,前端">
+	<meta name="description" content="吴相杰的个人博客网站">
+
+	<link rel="shortcut icon" href="favicon.ico"/>
+	<link rel="bookmark" href="favicon.ico"/>
+	
+	<link rel="stylesheet" type="text/css" href="css/cssreset.css">
+	<link rel="stylesheet" type="text/css" href="css/base.css">
+	<link rel="stylesheet" type="text/css" href="css/blogs.css">
+	<link rel="stylesheet" type="text/css" href="css/shCoreDefault.css">
+	<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">
+</head>
+<body>
+	<div class="ibody clearfix">
+
+<!-- /header -->
+		<header>
+			<h1>Cold Tea</h1>
+			<h2>
+				那些我们一直惴惴不安 而又充满好奇的未来 在我心里 隐隐约约地感觉到它们是明亮的
+			</h2>
+
+<!-- 头部logo -->
+			<div class="logo">
+				<a href="https://309166513.github.io/index.html"></a>
+			</div>
+			<div id="time_location">
+				<span></span>
+				<span></span>
+			</div>
+<!-- 头部导航 -->			
+			<nav id="topnav">
+				<a href="https://309166513.github.io/index.html">首页</a>
+				<a href="https://309166513.github.io/about.html">关于我</a>
+				<a href="https://309166513.github.io/blog.html">博文列表</a>
+				<a href="https://309166513.github.io/works.html">作品</a>
+				<a href="https://309166513.github.io/messages.html">留言板</a>
+			</nav>
+		</header>
+<!-- about主栏 -->
+	<article>
+		<div class="your_pos">
+			
+			<span>
+				您当前所在的位置是：<a href="https://309166513.github.io/index.html">首页</a>><a href="https://309166513.github.io/blog.html">博文列表</a>><span class="tit"></span>
+			</span>
+		</div>
+
+		<div class="content">
+
+<!-- 文章标题 -->
+			<h3 class="blog_tit">
+				前端常用算法总结
+			</h3>
+<!-- class="brush:xml brush:css brush:js" -->
+<!-- 文章内容区 -->
+			<p>一、排序</p>
+			<p style="color:red;font-size:18px">
+				冒泡排序
+			</p>
+			<p>
+				<pre class="brush:js">
+		function sort1(arr){
+			for (var i = 0; i < arr.length; i++) {
+				for(var j =0;j < arr.length-i;j++){
+					//两层循环，第一次循环把最大的数字放到最后，第二次把第二大的数字放到最后，以此类推
+					if(arr[j]>arr[j+1]){
+						var n = arr[j];
+						arr[j]=arr[j+1];
+						arr[j+1]=n;
+					}
+				}
+			}
+		}
+		var a =[1,55,88,77,66,0,-33,99,456,-333];
+		sort1(a);
+		console.log(a);
+
+		//反向冒泡
+		function sort2(arr){
+			for(i=0;i< arr.length;i++){
+				for(j=arr.length-i;j>0;j--){
+					if(arr[j]>arr[j-1]){
+						var n = arr[j];
+						arr[j]=arr[j-1];
+						arr[j-1]=n;
+					}
+				}
+			}
+		}
+		var a =[1,55,88,77,66,0,-33,99,456,-333];
+		sort2(a);
+		console.log(a);
+
+				</pre>
+			</p>
+			<p>
+				冒泡排序其实就是通过比较相邻位置的元素大小，如果左边比右边大，就交换位置，继续比较，实际上就是每轮比较都得出一个最大值（或者最小值）。然后通过n-1轮比较，就能得出一个排好序的序列（通过设置一个flag，当数组基本有序的时候其实不一定需要比较到n-1轮）
+			</p>
+			<p style="color:red;font-size:18px">快速排序</p>
+			<p>
+				<pre class="brush:js">
+		function quickSort(arr){
+			if(arr.length<=1){
+				return arr;
+			}
+			var midindex = Math.floor(arr.length/2);
+			var mid = arr.splice(midindex,1)[0];
+			var left=[];
+			var right = [];
+			for(i=0;i< arr.length;i++){
+				if(arr[i]< mid){
+					left.push(arr[i]);
+				}else{
+					right.push(arr[i]);
+				}
+			}
+
+			return quickSort(left).concat(mid,quickSort(right));
+		}
+		var a=[85, 24, 63, 45, 17, 31, 96, 50];
+		var b = quickSort(a);
+		console.log(b)
+
+				</pre>
+			</p>
+			<p>
+				快速排序简单来讲就是我们选定一个数，然后比它小的都放在它左边，大于等于它的都放在它右边，那么这个时候对这个数来讲他的位置已经排到了正确的地方了，接下来要做的就是在它的左右两边分别再进行类似操作。
+			</p>
+			<p style="color:red;font-size:18px">数组去重</p>
+			<p>
+				<pre class="brush:js">
+					//方法1
+		Array.prototype.unique=function(){
+			var n = []; 
+			//新建一个数组
+			for(i=0;i< this.length;i++){
+				//遍历原数组
+				if(n.indexOf(this[i])==-1){
+					//如果新数组里面没有原数组的其中一项
+					//push进新数组
+					n.push(this[i]);
+				}
+			}
+
+			//遍历完成，返回新数组
+			return n;
+		}
+
+		//方法2
+	Array.prototype.unique1=function(){
+
+			//新建一个哈希表和数组
+		var n =[];
+		var m ={};
+		for(i=0;i< this.length;i++){
+
+			//遍历原数组
+			if(!m[this[i]]){
+
+				//如果哈希表里不存在原数组第i项
+				//存入哈希表，值为true;
+				//push进新数组
+				m[this[i]]=true;
+				n.push(this[i])
+			}
+		}
+		return n;
+
+
+	}
+
+
+	//方法3
+	Array.prototype.unique2=function(){
+		var n = [this[0]];
+		for(i=1;i< this.length;i++){
+			//遍历原数组
+			//如果原数组的第i项查询首次出现的位置不是i,则为重复项
+			if(this.indexOf(this[i])==i){
+				n.push(this[i])
+			}
+		}
+		return n;
+
+
+	}
+
+
+	//方法4
+	Array.prototype.unique3=function(){
+		this.sort();
+		var re=[this[0]];
+
+		for(var i = 1; i < this.length; i++){
+			if( this[i] !== re[re.length-1]){
+				re.push(this[i]);
+			}
+		}
+
+		return re;
+	}
+
+		var a =[1,2,3,4,55,99,1,4,88,77,55,44,4];
+		var b =a.unique2();
+		console.log(b);
+				</pre>
+			</p>
+			
+<!-- 文章内容区end -->		
+		</div>
+
+
+		
+	</article>
+
+
+
+
+<!-- about边栏 -->
+		<aside>
+			<div class="side_nav" id ='side_nav'>
+				<ul>
+					<li>
+						<a href="https://309166513.github.io/index.html">首页</a>
+					</li>
+					<li>
+						<a href="https://309166513.github.io/about.html">关于我</a>
+					</li>
+					<li>
+						<a href="https://309166513.github.io/blog.html">博文列表</a>
+					</li>
+					<li>
+						<a href="https://309166513.github.io/works.html">作品</a>
+					</li>
+					
+					<li>
+						<a href="https://309166513.github.io/messages.html">留言板</a>
+					</li>
+				</ul>
+			</div>
+			
+
+
+		</aside>
+
+		<footer style='clear:both'>
+			© Copyright 2016 Cold Tea
+		</footer>
+		<script type="text/javascript" src='js/shCore.js'></script>
+		<script type="text/javascript" src='js/shBrushJScript.js'></script>
+		<script type="text/javascript" src='js/shBrushCss.js'></script>
+		<script type="text/javascript" src='js/shBrushXml.js'></script>
+		<script type="text/javascript" src='js/jQuery3.1.0.min.js'></script>
+		
+		<script type="text/javascript" src='js/index.js'></script>
+		<script type="text/javascript" src='js/blogs.js'></script>
+		
+	</div>
+</body>
+</html>

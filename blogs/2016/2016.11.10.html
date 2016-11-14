@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Cold Tea个人博客网站</title>
+	<meta name="keywords" content="吴相杰,博客,cold tea,前端">
+	<meta name="description" content="吴相杰的个人博客网站">
+
+	<link rel="shortcut icon" href="favicon.ico"/>
+	<link rel="bookmark" href="favicon.ico"/>
+	
+	<link rel="stylesheet" type="text/css" href="css/cssreset.css">
+	<link rel="stylesheet" type="text/css" href="css/base.css">
+	<link rel="stylesheet" type="text/css" href="css/blogs.css">
+	<link rel="stylesheet" type="text/css" href="css/shCoreDefault.css">
+	<style type="text/css">
+		h4{
+			font-size: 16px;
+			color: #EA1537;
+		}
+	</style>
+	<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">
+</head>
+<body>
+	<div class="ibody clearfix">
+
+<!-- /header -->
+		<header>
+			<h1>Cold Tea</h1>
+			<h2>
+				那些我们一直惴惴不安 而又充满好奇的未来 在我心里 隐隐约约地感觉到它们是明亮的
+			</h2>
+
+<!-- 头部logo -->
+			<div class="logo">
+				<a href="https://309166513.github.io/index.html"></a>
+			</div>
+			<div id="time_location">
+				<span></span>
+				<span></span>
+			</div>
+<!-- 头部导航 -->			
+			<nav id="topnav">
+				<a href="https://309166513.github.io/index.html">首页</a>
+				<a href="https://309166513.github.io/about.html">关于我</a>
+				<a href="https://309166513.github.io/blog.html">博文列表</a>
+				<a href="https://309166513.github.io/works.html">作品</a>
+				<a href="https://309166513.github.io/messages.html">留言板</a>
+			</nav>
+		</header>
+<!-- about主栏 -->
+	<article>
+		<div class="your_pos">
+			
+			<span>
+				您当前所在的位置是：<a href="https://309166513.github.io/index.html">首页</a>><a href="https://309166513.github.io/blog.html">博文列表</a>><span class="tit"></span>
+			</span>
+		</div>
+
+		<div class="content">
+
+<!-- 文章标题 -->
+			<h3 class="blog_tit">
+				网站性能优化总结
+			</h3>
+<!-- class="brush:xml brush:css brush:js" -->
+<!-- 文章内容区 -->
+			<h4>
+				常见性能优化总结
+			</h4><br>
+			<p>
+				1.http请求次数。
+			</p>
+			<p>
+				2.Css在页面的什么部位。
+			</p>
+			<p>
+				3.Javascript在页面什么部位。
+			</p>
+			<p>
+				4.是否有重复代码。
+			</p>
+			<p>
+				5.页面体积是否过多。
+			</p>
+			<p>
+				6.图片多大或者过多。
+			</p>
+			<p>				
+				7.html页面是否正确规范的进行嵌套。
+			</p><br>
+			<h4>
+				解决方案:   
+			</h4><br>
+			<p>			  
+				1.减少http请求就是要减少外链。首要就是减少css以及js文件过多。可以进行css和js文件进行合并。图片过多也会导致请求过多。
+
+			</p>
+			<p>
+				2.Css是负责页面渲染的，极早的进入可以进行页面渲染。
+			</p>
+			<p>
+				3.Javascript是脚本，无特殊情况都是在文档加载完毕才会执行，过早的请求无意义。
+			</p>
+			<p>
+				4.Css容易出现重复代码，在拿到项目的时候应当分析页面公用css样式。避免重复写属性。
+			</p>
+			<p>
+				5.可以将不必要的注释、无用的代码进行删减。
+			</p>
+			<p>
+				6.一张很普通的图片往往都比整个页面的体积要大，所以图片的问题很大，首先确定好图片的格式、品质。在保证效果的情况降低画质，缩减图片大小。尽量与页面需要大小相同。在图片上传服务器时可以用智图进行压缩。多张不改动的小背景图可以用css精灵技术实现，避免多次请求服务器。
+				Html是从上往下逐一解析，多一层嵌套就会多一点时间，正确的嵌套会让整个页面解析渲染的时间少。避免了页面代码的臃肿。
+			</p>
+<!-- 文章内容区end -->		
+		</div>
+
+
+		
+	</article>
+
+
+
+
+<!-- about边栏 -->
+		<aside>
+			<div class="side_nav" id ='side_nav'>
+				<ul>
+					<li>
+						<a href="https://309166513.github.io/index.html">首页</a>
+					</li>
+					<li>
+						<a href="https://309166513.github.io/about.html">关于我</a>
+					</li>
+					<li>
+						<a href="https://309166513.github.io/blog.html">博文列表</a>
+					</li>
+					<li>
+						<a href="https://309166513.github.io/works.html">作品</a>
+					</li>
+					
+					<li>
+						<a href="https://309166513.github.io/messages.html">留言板</a>
+					</li>
+				</ul>
+			</div>
+			
+
+
+		</aside>
+
+		<footer style='clear:both'>
+			© Copyright 2016 Cold Tea
+		</footer>
+		<script type="text/javascript" src='js/shCore.js'></script>
+		<script type="text/javascript" src='js/shBrushJScript.js'></script>
+		<script type="text/javascript" src='js/shBrushCss.js'></script>
+		<script type="text/javascript" src='js/shBrushXml.js'></script>
+		<script type="text/javascript" src='js/jQuery3.1.0.min.js'></script>
+		
+		<script type="text/javascript" src='js/index.js'></script>
+		<script type="text/javascript" src='js/blogs.js'></script>
+		
+	</div>
+</body>
+</html>

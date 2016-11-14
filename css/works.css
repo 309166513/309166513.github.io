@@ -1,0 +1,66 @@
+.worklist{
+	margin: 0 10px;
+}
+.worklist h3{
+	border-bottom: 2px solid #333;
+	clear: both;
+    display: block;
+    font-family: "微软雅黑";
+    font-size: 14px;
+    margin-bottom: 10px;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+}
+.worklist h3 span{
+	display: inline-block;
+	background: #474645;
+    box-shadow: 4px 5px 1px #999;
+    color: #fff;
+    height: 25px;
+    line-height: 25px;
+    text-align: center;
+    width: 180px;
+}
+.worklist h3 a{
+	color: #666;
+    font-size: 12px;
+    position: absolute;
+    right: 0;
+    top: 4px;
+}
+
+.worklist li:hover{
+	background: #666;
+}
+.worklist li{
+	display: block;
+    float: left;
+    margin: 3px;
+    padding: 5px 5px 6px;
+    transition: all 1s ease 0s;
+}
+.worklist li img{
+	background: #fff none repeat scroll 0 0;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+    display: block;
+    height: 80px;
+    padding: 4px;
+    width: 142px;
+    transition: 1s;
+
+}
+.worklist li img:hover{
+	transform: scale(1.1);
+}
+.worklist li span{
+	color: #fff;
+    display: block;
+    height: 16px;
+    margin-top: 5px;
+    overflow: hidden;
+    text-align: center;
+    text-overflow: ellipsis;
+    width: 142px;
+    font-size: 14px;
+}
